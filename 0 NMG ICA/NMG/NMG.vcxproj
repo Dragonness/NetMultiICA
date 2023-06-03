@@ -147,6 +147,8 @@
   <ItemGroup>
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="NMG.cpp" />
+    <ClCompile Include="TCPServer.cpp" />
+    <ClCompile Include="UDPServer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />

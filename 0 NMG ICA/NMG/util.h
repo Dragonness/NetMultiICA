@@ -5,4 +5,8 @@
 #include <vector>
 #include <iostream>
 
+#include <thread>
+#include <list>
+
 using namespace sf;
+using namespace std;

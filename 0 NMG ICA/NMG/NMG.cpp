@@ -1,26 +1,41 @@
 #include "util.h"
+#include "Game.h"
+#include "TCPServer.cpp"
+#include "UDPServer.cpp"
 
 
+using namespace std;
 
 
+/// STUDENT ID --- B1061770
+/// CODENAME --- MYSTIC SITOIANU
+/// PROJECT --- Network and Multiplayer Games ICA
+
+/*
+--- NMG.cpp :: main, Client and the game logic
+
+--- TCP & UDP servers are within their repective files and kept there for easier access.
+
+--- Use ARROW keys to move around.
+*/
 
 
-
-
-
-
-
-/// MAIN GAME
-/*int main()
+void Client()
 {
-    // ****************************************
+
+}
+
+
+void Run(RenderWindow& window)
+{
     // Initialise
     srand(time(NULL));
 
-    RenderWindow app(VideoMode(640, 480), "Car Racing Game!");
+    RenderWindow app(VideoMode(800, 800), "Trials");
     app.setFramerateLimit(60);
 
-    Texture t1, t2;
+
+    /*Texture t1, t2;
     t1.loadFromFile("images/background.png");
     t2.loadFromFile("images/car.png");
     t1.setSmooth(true);
@@ -34,7 +49,40 @@
     const int N = 5;
     Car car[N];
 
-    Color colors[5] = { Color::Red, Color::Green, Color::Magenta, Color::Blue, Color::White };
+    Color colors[5] = { Color::Red, Color::Green, Color::Magenta, Color::Blue, Color::White };*/
+}
+
+
+/// -------- RUNNING EVERYTHING TOGETHER --------
+int main()
+{
+    RenderWindow window(VideoMode(730, 730), "Networking ICA");
+    Font font;
+    /*if (!font.loadFromFile("file/location/name.ttf"))
+    {
+        cerr << "ERROR: Font not found \n";
+        return false;
+    }*/
+
+    while (window.isOpen())
+    {
+        Event event;
+
+        while (window.pollEvent(event))
+        {
+            if (event.type == Event::Closed) { window.close(); }
+        }
+    }
+}
+
+
+
+
+
+/*int main()
+{
+    // ****************************************
+    
 
     // Starting positions
     for (int i = 0; i < N; i++)
