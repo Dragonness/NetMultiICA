@@ -1,81 +1,50 @@
-﻿  Game.cpp
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\Game.cpp(17,36): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\Game.cpp(17,65): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-  NMG.cpp
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\TCPServer.cpp(23,17): error C2079: 'stream' uses undefined class 'std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>'
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\TCPServer.cpp(24,11): error C2297: '<<': not valid as right operand has type 'const char [14]'
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\TCPServer.cpp(24,11): error C2678: binary '<<': no operator found which takes a left-hand operand of type 'int' (or there is no acceptable conversion)
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\SFML-2.5.1\include\SFML\Network\IpAddress.hpp(294,32): message : could be 'std::ostream &sf::operator <<(std::ostream &,const sf::IpAddress &)'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\thread(226,37): message : or       'std::basic_ostream<_Elem,_Traits> &std::operator <<(std::basic_ostream<_Elem,_Traits> &,std::thread::id)'
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\TCPServer.cpp(24,11): message : 'std::basic_ostream<_Elem,_Traits> &std::operator <<(std::basic_ostream<_Elem,_Traits> &,std::thread::id)': could not deduce template argument for 'std::basic_ostream<_Elem,_Traits> &' from 'int'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\ostream(1075,32): message : or       'std::basic_ostream<_Elem,_Traits> &std::operator <<(std::basic_ostream<_Elem,_Traits> &,const std::error_code &)'
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\TCPServer.cpp(24,11): message : 'std::basic_ostream<_Elem,_Traits> &std::operator <<(std::basic_ostream<_Elem,_Traits> &,const std::error_code &)': could not deduce template argument for 'std::basic_ostream<_Elem,_Traits> &' from 'int'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\ostream(998,9): message : or       '_Ostr &&std::operator <<(_Ostr &&,const _Ty &)'
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\TCPServer.cpp(24,1): message : '_Ostr &&std::operator <<(_Ostr &&,const _Ty &)': could not deduce template argument for '__formal'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\ostream(940,31): message : or       'std::basic_ostream<char,_Traits> &std::operator <<(std::basic_ostream<char,_Traits> &,unsigned char)'
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\TCPServer.cpp(24,11): message : 'std::basic_ostream<char,_Traits> &std::operator <<(std::basic_ostream<char,_Traits> &,unsigned char)': could not deduce template argument for 'std::basic_ostream<char,_Traits> &' from 'int'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\ostream(934,31): message : or       'std::basic_ostream<char,_Traits> &std::operator <<(std::basic_ostream<char,_Traits> &,const unsigned char *)'
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\TCPServer.cpp(24,11): message : 'std::basic_ostream<char,_Traits> &std::operator <<(std::basic_ostream<char,_Traits> &,const unsigned char *)': could not deduce template argument for 'std::basic_ostream<char,_Traits> &' from 'int'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\ostream(929,31): message : or       'std::basic_ostream<char,_Traits> &std::operator <<(std::basic_ostream<char,_Traits> &,signed char)'
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\TCPServer.cpp(24,11): message : 'std::basic_ostream<char,_Traits> &std::operator <<(std::basic_ostream<char,_Traits> &,signed char)': could not deduce template argument for 'std::basic_ostream<char,_Traits> &' from 'int'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\ostream(923,31): message : or       'std::basic_ostream<char,_Traits> &std::operator <<(std::basic_ostream<char,_Traits> &,const signed char *)'
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\TCPServer.cpp(24,11): message : 'std::basic_ostream<char,_Traits> &std::operator <<(std::basic_ostream<char,_Traits> &,const signed char *)': could not deduce template argument for 'std::basic_ostream<char,_Traits> &' from 'int'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\ostream(887,32): message : or       'std::basic_ostream<_Elem,_Traits> &std::operator <<(std::basic_ostream<_Elem,_Traits> &,_Elem)'
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\TCPServer.cpp(24,11): message : 'std::basic_ostream<_Elem,_Traits> &std::operator <<(std::basic_ostream<_Elem,_Traits> &,_Elem)': could not deduce template argument for 'std::basic_ostream<_Elem,_Traits> &' from 'int'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\ostream(844,32): message : or       'std::basic_ostream<_Elem,_Traits> &std::operator <<(std::basic_ostream<_Elem,_Traits> &,const _Elem *)'
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\TCPServer.cpp(24,11): message : 'std::basic_ostream<_Elem,_Traits> &std::operator <<(std::basic_ostream<_Elem,_Traits> &,const _Elem *)': could not deduce template argument for 'std::basic_ostream<_Elem,_Traits> &' from 'int'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\ostream(806,31): message : or       'std::basic_ostream<char,_Traits> &std::operator <<(std::basic_ostream<char,_Traits> &,char)'
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\TCPServer.cpp(24,11): message : 'std::basic_ostream<char,_Traits> &std::operator <<(std::basic_ostream<char,_Traits> &,char)': could not deduce template argument for 'std::basic_ostream<char,_Traits> &' from 'int'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\ostream(761,31): message : or       'std::basic_ostream<char,_Traits> &std::operator <<(std::basic_ostream<char,_Traits> &,const char *)'
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\TCPServer.cpp(24,11): message : 'std::basic_ostream<char,_Traits> &std::operator <<(std::basic_ostream<char,_Traits> &,const char *)': could not deduce template argument for 'std::basic_ostream<char,_Traits> &' from 'int'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\ostream(725,32): message : or       'std::basic_ostream<_Elem,_Traits> &std::operator <<(std::basic_ostream<_Elem,_Traits> &,char)'
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\TCPServer.cpp(24,11): message : 'std::basic_ostream<_Elem,_Traits> &std::operator <<(std::basic_ostream<_Elem,_Traits> &,char)': could not deduce template argument for 'std::basic_ostream<_Elem,_Traits> &' from 'int'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\ostream(681,32): message : or       'std::basic_ostream<_Elem,_Traits> &std::operator <<(std::basic_ostream<_Elem,_Traits> &,const char *)'
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\TCPServer.cpp(24,11): message : 'std::basic_ostream<_Elem,_Traits> &std::operator <<(std::basic_ostream<_Elem,_Traits> &,const char *)': could not deduce template argument for 'std::basic_ostream<_Elem,_Traits> &' from 'int'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\memory(3629,32): message : or       'std::basic_ostream<_Elem,_Traits> &std::operator <<(std::basic_ostream<_Elem,_Traits> &,const std::unique_ptr<_Ty2,_Dx2> &)'
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\TCPServer.cpp(24,11): message : 'std::basic_ostream<_Elem,_Traits> &std::operator <<(std::basic_ostream<_Elem,_Traits> &,const std::unique_ptr<_Ty2,_Dx2> &)': could not deduce template argument for 'std::basic_ostream<_Elem,_Traits> &' from 'int'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\memory(1976,32): message : or       'std::basic_ostream<_Elem,_Traits> &std::operator <<(std::basic_ostream<_Elem,_Traits> &,const std::shared_ptr<_Ty> &)'
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\TCPServer.cpp(24,11): message : 'std::basic_ostream<_Elem,_Traits> &std::operator <<(std::basic_ostream<_Elem,_Traits> &,const std::shared_ptr<_Ty> &)': could not deduce template argument for 'std::basic_ostream<_Elem,_Traits> &' from 'int'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring(5221,32): message : or       'std::basic_ostream<_Elem,_Traits> &std::operator <<(std::basic_ostream<_Elem,_Traits> &,const std::basic_string<_Elem,_Traits,_Alloc> &)'
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\TCPServer.cpp(24,11): message : 'std::basic_ostream<_Elem,_Traits> &std::operator <<(std::basic_ostream<_Elem,_Traits> &,const std::basic_string<_Elem,_Traits,_Alloc> &)': could not deduce template argument for 'std::basic_ostream<_Elem,_Traits> &' from 'int'
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\TCPServer.cpp(24,11): message : while trying to match the argument list '(int, sf::IpAddress)'
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\NMG.cpp(32,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+﻿  NMG.cpp
+D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\NMG.cpp(327,28): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\NMG.cpp(328,29): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\NMG.cpp(373,40): warning C4244: '+=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\NMG.cpp(374,40): warning C4244: '+=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\NMG.cpp(375,40): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\NMG.cpp(376,40): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\NMG.cpp(377,39): warning C4244: '=': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\NMG.cpp(378,39): warning C4244: '=': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\NMG.cpp(436,54): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   TCPServer.cpp
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\TCPServer.cpp(23,17): error C2079: 'stream' uses undefined class 'std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>'
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\TCPServer.cpp(24,11): error C2297: '<<': not valid as right operand has type 'const char [14]'
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\TCPServer.cpp(24,11): error C2678: binary '<<': no operator found which takes a left-hand operand of type 'int' (or there is no acceptable conversion)
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\SFML-2.5.1\include\SFML\Network\IpAddress.hpp(294,32): message : could be 'std::ostream &sf::operator <<(std::ostream &,const sf::IpAddress &)'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\thread(226,37): message : or       'std::basic_ostream<_Elem,_Traits> &std::operator <<(std::basic_ostream<_Elem,_Traits> &,std::thread::id)'
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\TCPServer.cpp(24,11): message : 'std::basic_ostream<_Elem,_Traits> &std::operator <<(std::basic_ostream<_Elem,_Traits> &,std::thread::id)': could not deduce template argument for 'std::basic_ostream<_Elem,_Traits> &' from 'int'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\ostream(1075,32): message : or       'std::basic_ostream<_Elem,_Traits> &std::operator <<(std::basic_ostream<_Elem,_Traits> &,const std::error_code &)'
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\TCPServer.cpp(24,11): message : 'std::basic_ostream<_Elem,_Traits> &std::operator <<(std::basic_ostream<_Elem,_Traits> &,const std::error_code &)': could not deduce template argument for 'std::basic_ostream<_Elem,_Traits> &' from 'int'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\ostream(998,9): message : or       '_Ostr &&std::operator <<(_Ostr &&,const _Ty &)'
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\TCPServer.cpp(24,1): message : '_Ostr &&std::operator <<(_Ostr &&,const _Ty &)': could not deduce template argument for '__formal'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\ostream(940,31): message : or       'std::basic_ostream<char,_Traits> &std::operator <<(std::basic_ostream<char,_Traits> &,unsigned char)'
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\TCPServer.cpp(24,11): message : 'std::basic_ostream<char,_Traits> &std::operator <<(std::basic_ostream<char,_Traits> &,unsigned char)': could not deduce template argument for 'std::basic_ostream<char,_Traits> &' from 'int'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\ostream(934,31): message : or       'std::basic_ostream<char,_Traits> &std::operator <<(std::basic_ostream<char,_Traits> &,const unsigned char *)'
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\TCPServer.cpp(24,11): message : 'std::basic_ostream<char,_Traits> &std::operator <<(std::basic_ostream<char,_Traits> &,const unsigned char *)': could not deduce template argument for 'std::basic_ostream<char,_Traits> &' from 'int'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\ostream(929,31): message : or       'std::basic_ostream<char,_Traits> &std::operator <<(std::basic_ostream<char,_Traits> &,signed char)'
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\TCPServer.cpp(24,11): message : 'std::basic_ostream<char,_Traits> &std::operator <<(std::basic_ostream<char,_Traits> &,signed char)': could not deduce template argument for 'std::basic_ostream<char,_Traits> &' from 'int'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\ostream(923,31): message : or       'std::basic_ostream<char,_Traits> &std::operator <<(std::basic_ostream<char,_Traits> &,const signed char *)'
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\TCPServer.cpp(24,11): message : 'std::basic_ostream<char,_Traits> &std::operator <<(std::basic_ostream<char,_Traits> &,const signed char *)': could not deduce template argument for 'std::basic_ostream<char,_Traits> &' from 'int'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\ostream(887,32): message : or       'std::basic_ostream<_Elem,_Traits> &std::operator <<(std::basic_ostream<_Elem,_Traits> &,_Elem)'
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\TCPServer.cpp(24,11): message : 'std::basic_ostream<_Elem,_Traits> &std::operator <<(std::basic_ostream<_Elem,_Traits> &,_Elem)': could not deduce template argument for 'std::basic_ostream<_Elem,_Traits> &' from 'int'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\ostream(844,32): message : or       'std::basic_ostream<_Elem,_Traits> &std::operator <<(std::basic_ostream<_Elem,_Traits> &,const _Elem *)'
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\TCPServer.cpp(24,11): message : 'std::basic_ostream<_Elem,_Traits> &std::operator <<(std::basic_ostream<_Elem,_Traits> &,const _Elem *)': could not deduce template argument for 'std::basic_ostream<_Elem,_Traits> &' from 'int'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\ostream(806,31): message : or       'std::basic_ostream<char,_Traits> &std::operator <<(std::basic_ostream<char,_Traits> &,char)'
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\TCPServer.cpp(24,11): message : 'std::basic_ostream<char,_Traits> &std::operator <<(std::basic_ostream<char,_Traits> &,char)': could not deduce template argument for 'std::basic_ostream<char,_Traits> &' from 'int'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\ostream(761,31): message : or       'std::basic_ostream<char,_Traits> &std::operator <<(std::basic_ostream<char,_Traits> &,const char *)'
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\TCPServer.cpp(24,11): message : 'std::basic_ostream<char,_Traits> &std::operator <<(std::basic_ostream<char,_Traits> &,const char *)': could not deduce template argument for 'std::basic_ostream<char,_Traits> &' from 'int'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\ostream(725,32): message : or       'std::basic_ostream<_Elem,_Traits> &std::operator <<(std::basic_ostream<_Elem,_Traits> &,char)'
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\TCPServer.cpp(24,11): message : 'std::basic_ostream<_Elem,_Traits> &std::operator <<(std::basic_ostream<_Elem,_Traits> &,char)': could not deduce template argument for 'std::basic_ostream<_Elem,_Traits> &' from 'int'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\ostream(681,32): message : or       'std::basic_ostream<_Elem,_Traits> &std::operator <<(std::basic_ostream<_Elem,_Traits> &,const char *)'
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\TCPServer.cpp(24,11): message : 'std::basic_ostream<_Elem,_Traits> &std::operator <<(std::basic_ostream<_Elem,_Traits> &,const char *)': could not deduce template argument for 'std::basic_ostream<_Elem,_Traits> &' from 'int'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\memory(3629,32): message : or       'std::basic_ostream<_Elem,_Traits> &std::operator <<(std::basic_ostream<_Elem,_Traits> &,const std::unique_ptr<_Ty2,_Dx2> &)'
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\TCPServer.cpp(24,11): message : 'std::basic_ostream<_Elem,_Traits> &std::operator <<(std::basic_ostream<_Elem,_Traits> &,const std::unique_ptr<_Ty2,_Dx2> &)': could not deduce template argument for 'std::basic_ostream<_Elem,_Traits> &' from 'int'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\memory(1976,32): message : or       'std::basic_ostream<_Elem,_Traits> &std::operator <<(std::basic_ostream<_Elem,_Traits> &,const std::shared_ptr<_Ty> &)'
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\TCPServer.cpp(24,11): message : 'std::basic_ostream<_Elem,_Traits> &std::operator <<(std::basic_ostream<_Elem,_Traits> &,const std::shared_ptr<_Ty> &)': could not deduce template argument for 'std::basic_ostream<_Elem,_Traits> &' from 'int'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring(5221,32): message : or       'std::basic_ostream<_Elem,_Traits> &std::operator <<(std::basic_ostream<_Elem,_Traits> &,const std::basic_string<_Elem,_Traits,_Alloc> &)'
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\TCPServer.cpp(24,11): message : 'std::basic_ostream<_Elem,_Traits> &std::operator <<(std::basic_ostream<_Elem,_Traits> &,const std::basic_string<_Elem,_Traits,_Alloc> &)': could not deduce template argument for 'std::basic_ostream<_Elem,_Traits> &' from 'int'
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\TCPServer.cpp(24,11): message : while trying to match the argument list '(int, sf::IpAddress)'
-  UDPServer.cpp
+D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\TCPServer.cpp(103,43): warning C4267: '=': conversion from 'size_t' to 'unsigned short', possible loss of data
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\Messaage.h(68): warning C4715: 'operator>>': not all control paths return a value
+  All 631 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  NMG.vcxproj -> D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\x64\Release\NMG.exe

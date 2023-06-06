@@ -11,20 +11,23 @@ class ClientInfo
 private:
 public:
 	Message type;
-	bool toSelf = false, toOthers = true;
-	IpAddress ip;
-	unsigned short port, ID;
+	bool toSelf = false;
+	bool toOthers = true; /// Used after getting some help from someone in class - useful for TCP server
+	sf::IpAddress ip;
+	unsigned short port;
+	unsigned short ID;
 
 	//string username;
-	Vector2f pos;
+	sf::Vector2f pos;
 	float speed, angle;
-	friend Packet& operator<<(Packet pack, const ClientInfo& client)
+
+	friend sf::Packet& operator<<(sf::Packet pack, const ClientInfo& client)
 	{
 		pack << client.type;
 		pack << client.toSelf;
 		pack << client.toOthers;
 
-		string ipString = client.ip.toString();
+		std::string ipString = client.ip.toString();
 		pack << ipString;
 
 		pack << client.port;
@@ -40,7 +43,7 @@ public:
 		return pack;
 	}
 
-	friend Packet& operator>>(Packet pack, ClientInfo& client)
+	friend sf::Packet& operator>>(sf::Packet pack, ClientInfo& client)
 	{
 		int type;
 		pack >> type;
@@ -49,9 +52,9 @@ public:
 		pack >> client.toSelf;
 		pack >> client.toOthers;
 
-		string ipString;
+		std::string ipString;
 		pack >> ipString;
-		client.ip = IpAddress(ipString);
+		client.ip = sf::IpAddress(ipString);
 
 		pack >> client.port;
 		pack >> client.ID;
@@ -66,8 +69,8 @@ public:
 
 	void PrintPos()
 	{
-		stringstream stream;
-		stream << "X - " << pos.x << " Y - " << pos.y << endl;
-		cout << stream.str();
+		std::stringstream stream;
+		stream << "X - " << pos.x << " Y - " << pos.y << std::endl;
+		std::cout << stream.str();
 	}
 };

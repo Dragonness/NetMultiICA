@@ -1,4 +1,5 @@
 #include "util.h"
+#include "TCPServer.h"
 
 class TCPReceiver
 {
@@ -78,11 +79,11 @@ public:
 
 void TCPServer()
 {
-	list<shared_ptr<TcpSocket>> connectedClients;
-	list<Packet> queue;
+	std::list<shared_ptr<TcpSocket>> connectedClients;
+	std::list<Packet> queue;
 
 	Accepter accept(connectedClients, queue);
-	thread accThread(&Accepter::AcceptLoop, &accept);
+	std::thread accThread(&Accepter::AcceptLoop, &accept);
 	accThread.detach();
 
 	while (1)
@@ -112,7 +113,7 @@ void TCPServer()
 				{
 					client->send(sendPack.getData(), sendPack.getDataSize());
 				}
-				else if (recInfo.toOthers && !(client->getRemoteAddress() == recInfo.ip && client->getRemotePort() = recInfo.port)) //come back to this
+				else if (recInfo.toOthers && !(client->getRemoteAddress() == recInfo.ip && client->getRemotePort() == recInfo.port))
 				{
 					client->send(sendPack.getData(), sendPack.getDataSize());
 				}

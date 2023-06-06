@@ -38,5 +38,11 @@
     <ClInclude Include="Messaage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="TCPServer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UDPServer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
