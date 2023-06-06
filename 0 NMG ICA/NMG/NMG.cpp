@@ -20,37 +20,72 @@ using namespace std;
 */
 
 
-void Client()
+class Client
 {
+private:
+    shared_ptr<TcpSocket> tSocket;
+    UdpSocket* uSocket;
+    list<Packet>& queue;
+public:
+    Client(UdpSocket* UDPsock, shared_ptr<TcpSocket> TCPsock, list<Packet>& cQueue) :
+        tSocket(TCPsock), uSocket(UDPsock), queue(cQueue) {}
 
-}
+    void Receive()
+    {
+        char buffer[256];
+        {
+            stringstream stream;
+            stream << "Reciever : " << tSocket->getRemoteAddress() << " : " << tSocket->getRemotePort() << endl;
+            cout << stream.str();
+        }
+
+        tSocket->setBlocking(false);
+        uSocket->setBlocking(false);
 
 
-void Run(RenderWindow& window)
-{
-    // Initialise
-    srand(time(NULL));
 
-    RenderWindow app(VideoMode(800, 800), "Trials");
-    app.setFramerateLimit(60);
+        while (true)
+        {
+            memset(buffer, 0, 256);
+            size_t received;
+            Packet packet;
+            IpAddress UDPip = "192.168.0.159"; /// Local ip address of my laptop so needs to get changed based on the PC
+            unsigned short UDPport = UDPPORT;
+
+            auto tstatus = tSocket->receive(buffer, 256, received);
+            if (tstatus == Socket::Done)
+            {
+                packet.append(buffer, received);
+
+                stringstream stream;
+                stream << "TCP - Received: \"" << buffer << "\", " << received << " bytes." << endl;
+                cout << stream.str();
+
+                queue.push_back(packet);
+            }
+            else if (tstatus == Socket::Disconnected)
+            {
+                cout << "Receive loop has been dropped.";
+                break;
+            }
+
+            auto uStatus = uSocket->receive(buffer, sizeof(buffer), received, UDPip, UDPport);
+            if (uStatus == Socket::Done)
+            {
+                packet.append(buffer, received);
+                queue.push_back(packet);
+            }
+
+            /*if (uStatus == Socket::NotReady || tstatus == Socket::NotReady)
+            {
+                ///do something to ease up on the CPU
+            }*/
+        }
+    }
+};
 
 
-    /*Texture t1, t2;
-    t1.loadFromFile("images/background.png");
-    t2.loadFromFile("images/car.png");
-    t1.setSmooth(true);
-    t2.setSmooth(true);
-
-    Sprite sBackground(t1), sCar(t2);
-    sBackground.scale(2, 2);
-    sCar.setOrigin(22, 22);
-
-    float R = 22;
-    const int N = 5;
-    Car car[N];
-
-    Color colors[5] = { Color::Red, Color::Green, Color::Magenta, Color::Blue, Color::White };*/
-}
+void Run(RenderWindow& window);
 
 
 /// -------- RUNNING EVERYTHING TOGETHER --------
@@ -63,18 +98,99 @@ int main()
         cerr << "ERROR: Font not found \n";
         return false;
     }*/
+    Text text;
+    text.setFont(font);
+
+    vector<string> choices;
+    choices.push_back("Host Game");
+    choices.push_back("Join Game");
+    choices.push_back("Quit");
+    int select{ 0 };
+    bool keyPress{ false };
+
+
 
     while (window.isOpen())
     {
         Event event;
-
         while (window.pollEvent(event))
         {
             if (event.type == Event::Closed) { window.close(); }
         }
+        
+        window.clear();
+
+        if (window.hasFocus())
+        {
+            if (Keyboard::isKeyPressed(Keyboard::Up) && !keyPress)
+            {
+                keyPress = true;
+                if (select > 0) { select--; }
+            }
+            if (Keyboard::isKeyPressed(Keyboard::Down) && !keyPress)
+            {
+                keyPress = true;
+                if (select < choices.size() - 1) { select++; }
+            }
+
+            if (keyPress && !Keyboard::isKeyPressed(Keyboard::Up) && !Keyboard::isKeyPressed(Keyboard::Down)) { keyPress = false; }
+
+            if (Keyboard::isKeyPressed(Keyboard::Space) || Keyboard::isKeyPressed(Keyboard::Return))
+            {
+                if (select == 0)
+                {
+                    keyPress = true;
+                    thread tServerTh(&TCPServer);
+                    tServerTh.detach();
+                    //thread uServerTh(&UDPServer);
+                    //uServerTh.detach();
+                    Run(window);
+                }
+                if (select == 1)
+                {
+                    keyPress = true;
+                    Run(window);
+                }
+                if (select == 2) { return false; }
+            }
+
+            Vector2f pos{ 20,100 };
+            text.setCharacterSize(20);
+            text.setString("Racing Games");
+            text.setStyle(Text::Bold);
+
+
+        }
     }
 }
 
+
+
+
+//{
+//    // Initialise
+//    srand(time(NULL));
+//
+//    RenderWindow app(VideoMode(800, 800), "Trials");
+//    app.setFramerateLimit(60);
+//
+//
+//    /*Texture t1, t2;
+//    t1.loadFromFile("images/background.png");
+//    t2.loadFromFile("images/car.png");
+//    t1.setSmooth(true);
+//    t2.setSmooth(true);
+//
+//    Sprite sBackground(t1), sCar(t2);
+//    sBackground.scale(2, 2);
+//    sCar.setOrigin(22, 22);
+//
+//    float R = 22;
+//    const int N = 5;
+//    Car car[N];
+//
+//    Color colors[5] = { Color::Red, Color::Green, Color::Magenta, Color::Blue, Color::White };*/
+//}
 
 
 
