@@ -4,8 +4,6 @@
 #include "UDPServer.h"
 
 
-using namespace std;
-
 
 /// STUDENT ID --- B1061770
 /// CODENAME --- MYSTIC SITOIANU
@@ -18,6 +16,11 @@ using namespace std;
 
 --- Use ARROW keys to move around.
 */
+
+
+
+string pcIPadd = "192.168.0.159"; /// LOCAL ADDRESS -- TO BE CHANGED BASED ON THE PC
+
 
 
 class Client
@@ -49,7 +52,7 @@ public:
             memset(buffer, 0, 256);
             size_t received;
             Packet packet;
-            IpAddress UDPip = "192.168.0.159"; /// Local ip address of my laptop so needs to get changed based on the PC
+            IpAddress UDPip = pcIPadd; // Local IP address
             unsigned short UDPport = UDPPORT;
 
             auto tstatus = tSocket->receive(buffer, 256, received);
@@ -93,11 +96,11 @@ int main()
 {
     RenderWindow window(VideoMode(730, 730), "Networking ICA");
     Font font;
-    /*if (!font.loadFromFile("file/location/name.ttf"))
+    if (!font.loadFromFile("extras/FutureLight.ttf"))
     {
         cerr << "ERROR: Font not found \n";
         return false;
-    }*/
+    }
     Text text;
     text.setFont(font);
 
@@ -233,7 +236,7 @@ void Run(RenderWindow& window)
 
     unsigned short serverPort = UDPPORT;
     size_t received = 0;
-    IpAddress serverIP = "192.168.0.159"; /// Local IP address of my laptop so needs to get changed based on the PC
+    IpAddress serverIP = pcIPadd; // Local IP address
 
 
 
@@ -443,49 +446,3 @@ void Run(RenderWindow& window)
         window.display();
     }
 }
-
-
-
-/*int main()
-{
-    // ****************************************
-    // Loop
-
-    while (app.isOpen())
-    {
-        Event e;
-        while (app.pollEvent(e))
-        {
-            if (e.type == Event::Closed)
-                app.close();
-        }
-
-        // Step 2: update car movement
-
-        car[0].speed = speed;
-        car[0].angle = angle;
-        for (int i = 0; i < N; i++) car[i].move();
-        for (int i = 1; i < N; i++) car[i].findTarget();
-
-
-
-        // Step 3: Render
-        app.clear(Color::White);
-        // TODO: Stay within the limit of the map.
-        // TODO: Don't show white at bottom/right.
-        if (car[0].x > 320) offsetX = car[0].x - 320;
-        if (car[0].y > 240) offsetY = car[0].y - 240;
-        sBackground.setPosition(-offsetX, -offsetY);
-        app.draw(sBackground);
-        for (int i = 0; i < N; i++)
-        {
-            sCar.setPosition(car[i].x - offsetX, car[i].y - offsetY);
-            sCar.setRotation(car[i].angle * 180 / 3.141593);
-            sCar.setColor(colors[i]);
-            app.draw(sCar);
-        }
-        app.display();
-    }
-
-    return 0;
-}*/

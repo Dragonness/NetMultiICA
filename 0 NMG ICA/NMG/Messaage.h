@@ -65,6 +65,8 @@ public:
 
 		pack >> client.speed;
 		pack >> client.angle;
+
+		return pack;
 	}
 
 	void PrintPos()
