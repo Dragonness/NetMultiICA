@@ -1,2 +1,50 @@
-﻿  UDPServer.cpp
+﻿  Game.cpp
+D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\Game.cpp(17,36): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\Game.cpp(17,65): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+  NMG.cpp
+D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\NMG.cpp(330,28): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\NMG.cpp(331,29): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\NMG.cpp(376,40): warning C4244: '+=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\NMG.cpp(377,40): warning C4244: '+=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\NMG.cpp(378,40): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\NMG.cpp(379,40): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\NMG.cpp(380,39): warning C4244: '=': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\NMG.cpp(381,39): warning C4244: '=': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\NMG.cpp(439,54): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  TCPServer.cpp
+D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\TCPServer.cpp(103,43): warning C4267: '=': conversion from 'size_t' to 'unsigned short', possible loss of data
+  UDPServer.cpp
+  Generating Code...
   NMG.vcxproj -> D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\x64\Debug\NMG.exe

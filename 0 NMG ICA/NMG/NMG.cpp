@@ -42,9 +42,9 @@ public:
             cout << stream.str();
         }
 
+
         tSocket->setBlocking(false);
         uSocket->setBlocking(false);
-
 
 
         while (true)
@@ -78,11 +78,6 @@ public:
                 packet.append(buffer, received);
                 queue.push_back(packet);
             }
-
-            /*if (uStatus == Socket::NotReady || tstatus == Socket::NotReady)
-            {
-                ///do something to ease up on the CPU
-            }*/
         }
     }
 };
@@ -214,11 +209,10 @@ void Run(RenderWindow& window)
     }
 
 
-
     /// ----- UDP SERVER CONNECTION -----
     UdpSocket uSocket;
     unsigned int clientPort;
-    if (uSocket.bind(Socket::AnyPort) != Socket::Done)
+    if (uSocket.bind(UDPPORT) != Socket::Done)
     {
         clientPort = uSocket.getLocalPort();
         stringstream stream;
@@ -310,6 +304,7 @@ void Run(RenderWindow& window)
 
     const int players = 5;
     std::vector<Car> car(players, Car{}); 
+
 
     /*for (int i = 0; i < car.size(); i++)
     {

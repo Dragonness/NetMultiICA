@@ -43,11 +43,16 @@ void UDPServer()
 {
 	sf::UdpSocket uSock;
 	auto status = uSock.bind(UDPPORT);
-	if (status != Socket::Done) { cerr << "ERROR: UDP socket not BOUND." << endl; return; }
+	if (status != Socket::Done) 
+	{ 
+		cerr << "ERROR: UDP socket not BOUND." << endl; 
+		return; 
+	}
 
 	std::map<int, Connection> connedClients;
 	std::list<Packet> sQueue;
 	UDPReceiver udpRec(&uSock, sQueue);
+
 	thread recThr(&UDPReceiver::ReceiveLoop, udpRec);
 	recThr.detach();
 
@@ -56,13 +61,14 @@ void UDPServer()
 		if (sQueue.size() != 0)
 		{
 			ClientInfo recInfo;
-			sf::Packet recPack = sQueue.front(); // fucks up smth or other
-			recPack << recInfo;
+			sf::Packet recPack = sQueue.front(); // Keeps throwing exceptions
+			recPack >> recInfo;
 			sQueue.pop_front();
 
 			if (recInfo.type != Message::Update)
 			{
 				/// not the correct packet type
+				// skip it
 				continue;
 			}
 
@@ -87,7 +93,7 @@ void UDPServer()
 			/// Sending relavant information to all clients except sender
 			for (const auto& client : connedClients)
 			{
-				if (client.second.IP != recInfo.ip && client.second.port != recInfo.port)
+				if (client.second.IP != recInfo.ip || client.second.port != recInfo.port)
 				{
 					uSock.send(recPack.getData(), recPack.getDataSize(), client.second.IP, client.second.port);
 				}

@@ -1,7 +1,4 @@
-﻿  Game.cpp
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\Game.cpp(17,36): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\Game.cpp(17,65): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-  NMG.cpp
+﻿  NMG.cpp
 D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\NMG.cpp(330,28): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
           with
           [
@@ -43,12 +40,10 @@ D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\NMG.cpp(381,39
               T=float
           ]
 D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\NMG.cpp(439,54): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  TCPServer.cpp
-D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\NMG\TCPServer.cpp(103,43): warning C4267: '=': conversion from 'size_t' to 'unsigned short', possible loss of data
   UDPServer.cpp
   Generating code
-  12 of 760 functions ( 1.6%) were compiled, the rest were copied from previous compilation.
-    2 functions were new in current compilation
-    11 functions had inline decision re-evaluated but remain unchanged
+  4 of 760 functions ( 0.5%) were compiled, the rest were copied from previous compilation.
+    1 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   NMG.vcxproj -> D:\WORK STUFF DRIVE\Uni work\networking\NetMultiICA\0 NMG ICA\x64\Release\NMG.exe
