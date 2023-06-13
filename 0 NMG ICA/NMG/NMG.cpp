@@ -19,27 +19,27 @@
 
 
 
-string pcIPadd = "192.168.0.160"; /// LOCAL ADDRESS -- TO BE CHANGED BASED ON THE PC
+std::string pcIPadd = "192.168.0.160"; /// LOCAL ADDRESS -- TO BE CHANGED BASED ON THE PC
 
 
 
 class Client
 {
 private:
-    shared_ptr<TcpSocket> tSocket;
-    UdpSocket* uSocket;
-    list<Packet>& queue;
+    std::shared_ptr<sf::TcpSocket> tSocket;
+    sf::UdpSocket* uSocket;
+    std::list<sf::Packet>& queue;
 public:
-    Client(UdpSocket* UDPsock, shared_ptr<TcpSocket> TCPsock, list<Packet>& cQueue) :
+    Client(sf::UdpSocket* UDPsock, std::shared_ptr<sf::TcpSocket> TCPsock, std::list<sf::Packet>& cQueue) :
         tSocket(TCPsock), uSocket(UDPsock), queue(cQueue) {}
 
     void Receive()
     {
         char buffer[256];
         {
-            stringstream stream;
-            stream << "Reciever : " << tSocket->getRemoteAddress() << " : " << tSocket->getRemotePort() << endl;
-            cout << stream.str();
+            std::stringstream stream;
+            stream << "Reciever : " << tSocket->getRemoteAddress() << " : " << tSocket->getRemotePort() << std::endl;
+            std::cout << stream.str();
         }
 
 
@@ -51,29 +51,29 @@ public:
         {
             memset(buffer, 0, 256);
             size_t received;
-            Packet packet;
-            IpAddress UDPip = pcIPadd; // Local IP address
+            sf::Packet packet;
+            sf::IpAddress UDPip = pcIPadd; // Local IP address
             unsigned short UDPport = UDPPORT;
 
             auto tstatus = tSocket->receive(buffer, 256, received);
-            if (tstatus == Socket::Done)
+            if (tstatus == sf::Socket::Done)
             {
                 packet.append(buffer, received);
 
-                stringstream stream;
-                stream << "TCP - Received: \"" << buffer << "\", " << received << " bytes." << endl;
-                cout << stream.str();
+                std::stringstream stream;
+                stream << "TCP - Received: \"" << buffer << "\", " << received << " bytes." << std::endl;
+                std::cout << stream.str();
 
                 queue.push_back(packet);
             }
-            else if (tstatus == Socket::Disconnected)
+            else if (tstatus == sf::Socket::Disconnected)
             {
-                clog << "Receive loop has been dropped.";
+                std::clog << "Receive loop has been dropped.";
                 break;
             }
 
             auto uStatus = uSocket->receive(buffer, sizeof(buffer), received, UDPip, UDPport);
-            if (uStatus == Socket::Done)
+            if (uStatus == sf::Socket::Done)
             {
                 packet.append(buffer, received);
                 queue.push_back(packet);
@@ -83,23 +83,23 @@ public:
 };
 
 
-void Run(RenderWindow& window);
+void Run(sf::RenderWindow& window);
 
 
 /// -------- RUNNING EVERYTHING TOGETHER --------
 int main()
 {
-    RenderWindow window(VideoMode(730, 730), "Networking ICA");
-    Font font;
+    sf::RenderWindow window(sf::VideoMode(730, 730), "Networking ICA");
+    sf::Font font;
     if (!font.loadFromFile("extras/FutureLight.ttf"))
     {
-        cerr << "ERROR: Font not found \n";
+        std::cerr << "ERROR: sf::Font not found \n";
         return false;
     }
-    Text text;
+    sf::Text text;
     text.setFont(font);
 
-    vector<string> choices;
+    std::vector<std::string> choices;
     choices.push_back("Host Game");
     choices.push_back("Join Game");
     choices.push_back("Quit");
@@ -112,39 +112,39 @@ int main()
     {
         //UDPServer udp;
 
-        Event event;
+        sf::Event event;
         while (window.pollEvent(event))
         {
-            if (event.type == Event::Closed) { window.close(); }
+            if (event.type == sf::Event::Closed) { window.close(); }
         }
         
         window.clear();
 
         if (window.hasFocus())
         {
-            if (Keyboard::isKeyPressed(Keyboard::Up) && !keyPress)
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && !keyPress)
             {
                 keyPress = true;
                 if (select > 0) { select--; }
             }
-            if (Keyboard::isKeyPressed(Keyboard::Down) && !keyPress)
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && !keyPress)
             {
                 keyPress = true;
                 if (select < choices.size() - 1) { select++; }
             }
 
-            if (keyPress && !Keyboard::isKeyPressed(Keyboard::Up) && !Keyboard::isKeyPressed(Keyboard::Down)) { keyPress = false; }
+            if (keyPress && !sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && !sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) { keyPress = false; }
 
-            if (Keyboard::isKeyPressed(Keyboard::Space) || Keyboard::isKeyPressed(Keyboard::Return))
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) || sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
             {
                 if (select == 0)
                 {
                     keyPress = true;
-                    thread tServerTh(&TCPServer);
+                    std::thread tServerTh(&TCPServer);
                     tServerTh.detach();
 
-                    //thread uServerTh([&udp]() { udp.Server(); });    // Tired maybe putting it all in a class to help fix the exception... didn't work :/
-                    thread uServerTh(&UDPServer);
+                    //std::thread uServerTh([&udp]() { udp.Server(); });    // Tired maybe putting it all in a class to help fix the exception... didn't work :/
+                    std::thread uServerTh(&UDPServer);
                     uServerTh.detach();
                     Run(window);
                 }
@@ -156,12 +156,12 @@ int main()
                 if (select == 2) { return false; }
             }
 
-            Vector2f pos{ 20,100 };
+            sf::Vector2f pos{ 20,100 };
             text.setCharacterSize(20);
             text.setString("Racing Games");
-            text.setStyle(Text::Bold);
+            text.setStyle(sf::Text::Bold);
             text.setPosition(pos);
-            text.setFillColor(Color::White);
+            text.setFillColor(sf::Color::White);
             window.draw(text);
 
 
@@ -174,10 +174,10 @@ int main()
 
                     text.setString(p);
                     text.setPosition(pos);
-                    text.setStyle(Text::Regular);
+                    text.setStyle(sf::Text::Regular);
 
-                    if (count == select) { text.setFillColor(Color::Green); }
-                    else { text.setFillColor(Color::White); }
+                    if (count == select) { text.setFillColor(sf::Color::Green); }
+                    else { text.setFillColor(sf::Color::White); }
 
                     window.draw(text);
                     count++;
@@ -185,7 +185,7 @@ int main()
 
                 text.setString("Press 'space' to select");
                 text.setPosition(10, 10);
-                text.setFillColor(Color::White);
+                text.setFillColor(sf::Color::White);
                 text.setCharacterSize(10);
                 window.draw(text);
             }
@@ -198,51 +198,51 @@ int main()
 
 
 
-void Run(RenderWindow& window)
+void Run(sf::RenderWindow& window)
 {
     Game game;
 
     /// ----- TCP SERVER CONNECTION -----
-    shared_ptr<TcpSocket> tSockets = make_shared<TcpSocket>();
+    std::shared_ptr<sf::TcpSocket> tSockets = std::make_shared<sf::TcpSocket>();
 
-    if (tSockets->connect(IpAddress::getLocalAddress(), TCPPORT) != Socket::Done)
+    if (tSockets->connect(sf::IpAddress::getLocalAddress(), TCPPORT) != sf::Socket::Done)
     {
-        stringstream stream;
-        stream << "ERROR: Client failed to connect to TCP Server, PORT: " << TCPPORT << endl;
-        cerr << stream.str();
+        std::stringstream stream;
+        stream << "ERROR: Client failed to connect to TCP Server, PORT: " << TCPPORT << std::endl;
+        std::cerr << stream.str();
         return;
     }
 
 
     /// ----- UDP SERVER CONNECTION -----
-    UdpSocket uSocket;
+    sf::UdpSocket uSocket;
     unsigned int clientPort;
-    if (uSocket.bind(Socket::AnyPort) != Socket::Done)
+    if (uSocket.bind(sf::Socket::AnyPort) != sf::Socket::Done)
     {
         clientPort = uSocket.getLocalPort();
-        stringstream stream;
-        stream << "ERROR: Client failed to connect to UDP Server, PORT: " << clientPort << endl;
-        cerr << stream.str();
+        std::stringstream stream;
+        stream << "ERROR: Client failed to connect to UDP Server, PORT: " << clientPort << std::endl;
+        std::cerr << stream.str();
         return;
     }
 
     clientPort = uSocket.getLocalPort();
-    stringstream stream;
-    stream << "Client bounded to UDP Server PORT: " << clientPort << endl;
-    cout << stream.str();
+    std::stringstream stream;
+    stream << "Client bounded to UDP Server PORT: " << clientPort << std::endl;
+    std::cout << stream.str();
 
     stream.clear();
 
     unsigned short serverPort = UDPPORT;
     size_t received = 0;
-    IpAddress serverIP = "192.168.0.160"/*pcIPadd*/; // Local IP address
+    sf::IpAddress serverIP = "192.168.0.160"/*pcIPadd*/; // Local IP address
 
 
 
     /// ----- LAUCH CLIENT RECEIVER -----
-    list<Packet> queue;
+    std::list<sf::Packet> queue;
     Client cReceiver(&uSocket, tSockets, queue);
-    thread receiverTh(&Client::Receive, cReceiver);
+    std::thread receiverTh(&Client::Receive, cReceiver);
     receiverTh.detach();
 
 
@@ -250,33 +250,33 @@ void Run(RenderWindow& window)
     /// ----- PLAYER SETUP -----
     ClientInfo setupInfo;
     setupInfo.type = Message::Setup;
-    Packet setupPack;
+    sf::Packet setupPack;
     setupPack << setupInfo;
 
-    if (tSockets->send(setupPack.getData(), setupPack.getDataSize()) != Socket::Done)
+    if (tSockets->send(setupPack.getData(), setupPack.getDataSize()) != sf::Socket::Done)
     {
-        stream << "ERROR: Client to TCP Server -- failed to send setup information." << endl;
-        cerr << stream.str();
+        stream << "ERROR: Client to TCP Server -- failed to send setup information." << std::endl;
+        std::cerr << stream.str();
         return; // Find a way to retry
     }
 
     if (queue.empty())
     {
-        clog << "Client queue -- EMPTY." << endl;
+        std::clog << "Client queue -- EMPTY." << std::endl;
         while (queue.empty())
         {
             /// do something ?
         }
     }
 
-    clog << "Packet received." << endl;
-    Packet receivePack = queue.front();
+    std::clog << "sf::Packet received." << std::endl;
+    sf::Packet receivePack = queue.front();
     ClientInfo receiveInfo;
     receivePack >> setupInfo;
     if (setupInfo.type == Message::Setup) { queue.pop_front(); }
     else
     {
-        cerr << "ERROR: Message packet is not TYPE 'Setup'." << endl;
+        std::cerr << "ERROR: Message packet is not TYPE 'Setup'." << std::endl;
         return;
     }
     
@@ -293,14 +293,14 @@ void Run(RenderWindow& window)
     tBg.setSmooth(true);
     tCar.setSmooth(true);
     
-    Sprite bgSprite(tBg), carSprite(tCar);
+    sf::Sprite bgSprite(tBg), carSprite(tCar);
     bgSprite.scale(2, 2);
     carSprite.setOrigin(22, 22);
 
-    Font font;
-    if (!font.loadFromFile("")) { cout << "ERROR: Font not found"; return; }
+    sf::Font font;
+    if (!font.loadFromFile("")) { std::cout << "ERROR: sf::Font not found"; return; }
 
-    Text playerName;
+    sf::Text playerName;
     playerName.setFont(font);
     playerName.setCharacterSize(15);
     playerName.setOutlineThickness(3);
@@ -337,18 +337,18 @@ void Run(RenderWindow& window)
     /// GAME RUNNING
     while (window.isOpen())
     {
-        Event event;
+        sf::Event event;
         while (window.pollEvent(event))
         {
-            if (event.type == Event::Closed) { window.close(); }
+            if (event.type == sf::Event::Closed) { window.close(); }
         }
 
         bool up = false, left = false, down = false, right = false;
 
-        if (Keyboard::isKeyPressed(Keyboard::Up)) { up = true; }
-        if (Keyboard::isKeyPressed(Keyboard::Left)) { left = true; }
-        if (Keyboard::isKeyPressed(Keyboard::Down)) { down = true; }
-        if (Keyboard::isKeyPressed(Keyboard::Right)) { right = true; }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) { up = true; }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) { left = true; }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) { down = true; }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) { right = true; }
 
 
         /// CAR UPDATES
@@ -391,7 +391,7 @@ void Run(RenderWindow& window)
             cInfo.pos = car[localPlayer].pos;
             cInfo.angle = car[localPlayer].angle;
 
-            Packet pack;
+            sf::Packet pack;
             pack << cInfo;
             uSocket.send(pack.getData(), pack.getDataSize(), serverIP, serverPort);
         }
@@ -401,7 +401,7 @@ void Run(RenderWindow& window)
         while (!queue.empty())
         {
             ClientInfo recInfo;
-            Packet recPack = queue.front();
+            sf::Packet recPack = queue.front();
             recPack << recInfo;
             queue.pop_front();
 
@@ -415,7 +415,7 @@ void Run(RenderWindow& window)
 
 
         /// --- RENDERING --- 
-        window.clear(Color::White);
+        window.clear(sf::Color::White);
 
         /// Cam stays within bounds
         if (car[localPlayer].pos.x > 400) { offsetX = car[localPlayer].pos.x - 400; }

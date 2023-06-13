@@ -153,6 +153,7 @@
   <ItemGroup>
     <ClInclude Include="Game.h" />
     <ClInclude Include="Messaage.h" />
+    <ClInclude Include="Message.h" />
     <ClInclude Include="TCPServer.h" />
     <ClInclude Include="UDPServer.h" />
     <ClInclude Include="util.h" />

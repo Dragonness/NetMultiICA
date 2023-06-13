@@ -3,17 +3,17 @@
 
 struct Connection
 {
-	IpAddress IP;
+	sf::IpAddress IP;
 	unsigned short port;
 };
 
 class UDPReceiver
 {
 private:
-	UdpSocket* uSocket;
-	list<Packet>& queue;
+	sf::UdpSocket* uSocket;
+	std::list<sf::Packet>& queue;
 public:
-	UDPReceiver(UdpSocket* UDPsock, list<Packet>& uQueue) :
+	UDPReceiver(sf::UdpSocket* UDPsock, std::list<sf::Packet>& uQueue) :
 		uSocket(UDPsock), queue(uQueue) {};
 
 
@@ -29,7 +29,7 @@ public:
 			sf::IpAddress senderIp;
 			unsigned short senderPort = UDPPORT;
 
-			if (uSocket->receive(buffer, sizeof(buffer), received, senderIp, senderPort) == Socket::Done)
+			if (uSocket->receive(buffer, sizeof(buffer), received, senderIp, senderPort) == sf::Socket::Done)
 			{
 				pack.append(buffer, received);
 				queue.push_back(pack);
@@ -43,17 +43,17 @@ void UDPServer()
 {
 	sf::UdpSocket uSock;
 	auto status = uSock.bind(UDPPORT);
-	if (status != Socket::Done) 
+	if (status != sf::Socket::Done) 
 	{ 
-		cerr << "ERROR: UDP socket not BOUND." << endl; 
+		std::cerr << "ERROR: UDP socket not BOUND." << std::endl;
 		return; 
 	}
 
 	std::map<int, Connection> connedClients;
-	std::list<Packet> sQueue;
+	std::list<sf::Packet> sQueue;
 	UDPReceiver udpRec(&uSock, sQueue);
 
-	thread recThr(&UDPReceiver::ReceiveLoop, udpRec);
+	std::thread recThr(&UDPReceiver::ReceiveLoop, udpRec);
 	recThr.detach();
 
 	while (true)

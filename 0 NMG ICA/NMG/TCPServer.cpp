@@ -4,28 +4,28 @@
 class TCPReceiver
 {
 private:
-	shared_ptr<TcpSocket> sharedTSock;
-	list<Packet> queue;
+	std::shared_ptr<sf::TcpSocket> sharedTSock;
+	std::list<sf::Packet> queue;
 public:
-	TCPReceiver(std::shared_ptr<TcpSocket> TCPsockets, list<Packet>& Tqueue) :
+	TCPReceiver(std::shared_ptr<sf::TcpSocket> TCPsockets, std::list<sf::Packet>& Tqueue) :
 		sharedTSock(TCPsockets), queue(Tqueue) {}
 
 	void ReceiveLoop()
 	{
-		cout << "The TCP receiver loop has been initiated\n";
+		std::cout << "The TCP receiver loop has been initiated\n";
 		char buffer[256];
 
 		while (1)
 		{
 			memset(buffer, 0, 256);
 			size_t received = 0;
-			Packet packet;
+			sf::Packet packet;
 
-			stringstream stream;
-			stream << "TCP RECLOOP: " << sharedTSock->getRemoteAddress() << " : " << sharedTSock->getRemotePort() << endl;
-			cout << stream.str();
+			std::stringstream stream;
+			stream << "TCP RECLOOP: " << sharedTSock->getRemoteAddress() << " : " << sharedTSock->getRemotePort() << std::endl;
+			std::cout << stream.str();
 
-			if (sharedTSock->receive(buffer, sizeof(buffer), received) == Socket::Done)
+			if (sharedTSock->receive(buffer, sizeof(buffer), received) == sf::Socket::Done)
 			{
 				packet.append(buffer, received);
 				queue.push_back(packet);
@@ -37,41 +37,41 @@ public:
 class Accepter
 {
 private:
-	list<Packet>& queue;
-	list<shared_ptr<TcpSocket>>& sockets;
+	std::list<sf::Packet>& queue;
+	std::list<std::shared_ptr<sf::TcpSocket>>& sockets;
 public:
-	Accepter(list<shared_ptr<TcpSocket>> tSockets, list<Packet> tQueue) :
+	Accepter(std::list<std::shared_ptr<sf::TcpSocket>> tSockets, std::list<sf::Packet> tQueue) :
 		sockets(tSockets), queue(tQueue) {}
 
 	void AcceptLoop()
 	{
-		cout << "The TCP accepter loop has been initiated\n";
-		TcpListener lsnr;
+		std::cout << "The TCP accepter loop has been initiated\n";
+		sf::TcpListener lsnr;
 
-		if (lsnr.listen(TCPPORT) != Socket::Done)
+		if (lsnr.listen(TCPPORT) != sf::Socket::Done)
 		{
-			cerr << "TCP Error: Can't listen to accepter.";
+			std::cerr << "TCP Error: Can't listen to accepter.";
 			return;
 		}
-		cout << "TCP Server Bound to port: " << TCPPORT << endl;
+		std::cout << "TCP Server Bound to port: " << TCPPORT << std::endl;
 
 		while (true)
 		{
-			shared_ptr<TcpSocket> sock = make_shared<TcpSocket>();
+			std::shared_ptr<sf::TcpSocket> sock = std::make_shared<sf::TcpSocket>();
 
-			if (lsnr.accept(*sock) != Socket::Done)
+			if (lsnr.accept(*sock) != sf::Socket::Done)
 			{
-				cerr << "TCP Error: Connection not accepted." << endl;
+				std::cerr << "TCP Error: Connection not accepted." << std::endl;
 				return;
 			}
 
 			sockets.push_back(sock);
-			stringstream stream;
-			stream << "TCP Server accepted connection from: " << sock->getRemoteAddress() << " : " << sock->getRemotePort() << endl;
-			cout << stream.str();
+			std::stringstream stream;
+			stream << "TCP Server accepted connection from: " << sock->getRemoteAddress() << " : " << sock->getRemotePort() << std::endl;
+			std::cout << stream.str();
 
 			TCPReceiver TCP_Rec(sock, queue);
-			thread recThread(&TCPReceiver::ReceiveLoop, &TCP_Rec);
+			std::thread recThread(&TCPReceiver::ReceiveLoop, &TCP_Rec);
 			recThread.detach();
 		}
 	}
@@ -79,8 +79,8 @@ public:
 
 void TCPServer()
 {
-	std::list<shared_ptr<TcpSocket>> connectedClients;
-	std::list<Packet> queue;
+	std::list<std::shared_ptr<sf::TcpSocket>> connectedClients;
+	std::list<sf::Packet> queue;
 
 	Accepter accept(connectedClients, queue);
 	std::thread accThread(&Accepter::AcceptLoop, &accept);
@@ -91,11 +91,11 @@ void TCPServer()
 		if (!queue.empty())
 		{
 			ClientInfo recInfo;
-			Packet recPack = queue.front();
+			sf::Packet recPack = queue.front();
 			recPack >> recInfo;
 			queue.pop_front();
 
-			Packet sendPack;
+			sf::Packet sendPack;
 			ClientInfo sendInfo = recInfo;
 
 			if (recInfo.type == Message::Setup)

@@ -9,7 +9,7 @@ void Car::Update()
 	/// xy += sincos(angle) * speed * 0.5;
 }
 
-void Car::FindTarget(std::vector<Vector2f> points) // The AI
+void Car::FindTarget(std::vector<sf::Vector2f> points) // The AI
 {
 	float tx = points[c].x;
 	float ty = points[c].y;
@@ -24,10 +24,10 @@ void Car::Move()
 {
 	bool up = false, left = false, down = false, right = false;
 
-	if (Keyboard::isKeyPressed(Keyboard::Up)) { up = true; }
-	if (Keyboard::isKeyPressed(Keyboard::Left)) { left = true; }
-	if (Keyboard::isKeyPressed(Keyboard::Down)) { down = true; }
-	if (Keyboard::isKeyPressed(Keyboard::Right)) { right = true; }
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) { up = true; }
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) { left = true; }
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) { down = true; }
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) { right = true; }
 
 	if (up && speed < maxSpeed)
 	{

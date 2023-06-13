@@ -17,7 +17,7 @@
 #include <sstream>
 #include <thread>
 
-#include "Messaage.h"
+#include "Message.h"
 
-using namespace sf;
-using namespace std;
+//using namespace sf;
+//using namespace std;
