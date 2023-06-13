@@ -58,10 +58,11 @@ void UDPServer()
 
 	while (true)
 	{
-		if (sQueue.size() != 0)
+		if (sQueue.size() >= 1)
 		{
 			ClientInfo recInfo;
-			sf::Packet recPack = sQueue.front(); // Keeps throwing exceptions
+			sf::Packet recPack = sQueue.front(); // Keeps throwing exceptions 
+			// ^^ says the queue is empty but it shouldn't even get here if the queue is empty
 			recPack >> recInfo;
 			sQueue.pop_front();
 

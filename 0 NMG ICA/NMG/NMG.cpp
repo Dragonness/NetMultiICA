@@ -19,7 +19,7 @@
 
 
 
-string pcIPadd = "192.168.0.159"; /// LOCAL ADDRESS -- TO BE CHANGED BASED ON THE PC
+string pcIPadd = "192.168.0.160"; /// LOCAL ADDRESS -- TO BE CHANGED BASED ON THE PC
 
 
 
@@ -110,6 +110,8 @@ int main()
 
     while (window.isOpen())
     {
+        //UDPServer udp;
+
         Event event;
         while (window.pollEvent(event))
         {
@@ -140,6 +142,8 @@ int main()
                     keyPress = true;
                     thread tServerTh(&TCPServer);
                     tServerTh.detach();
+
+                    //thread uServerTh([&udp]() { udp.Server(); });    // Tired maybe putting it all in a class to help fix the exception... didn't work :/
                     thread uServerTh(&UDPServer);
                     uServerTh.detach();
                     Run(window);
@@ -200,6 +204,7 @@ void Run(RenderWindow& window)
 
     /// ----- TCP SERVER CONNECTION -----
     shared_ptr<TcpSocket> tSockets = make_shared<TcpSocket>();
+
     if (tSockets->connect(IpAddress::getLocalAddress(), TCPPORT) != Socket::Done)
     {
         stringstream stream;
@@ -212,7 +217,7 @@ void Run(RenderWindow& window)
     /// ----- UDP SERVER CONNECTION -----
     UdpSocket uSocket;
     unsigned int clientPort;
-    if (uSocket.bind(UDPPORT) != Socket::Done)
+    if (uSocket.bind(Socket::AnyPort) != Socket::Done)
     {
         clientPort = uSocket.getLocalPort();
         stringstream stream;
@@ -230,7 +235,7 @@ void Run(RenderWindow& window)
 
     unsigned short serverPort = UDPPORT;
     size_t received = 0;
-    IpAddress serverIP = pcIPadd; // Local IP address
+    IpAddress serverIP = "192.168.0.160"/*pcIPadd*/; // Local IP address
 
 
 
