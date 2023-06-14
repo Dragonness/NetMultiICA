@@ -50,7 +50,7 @@ public:
 
 		if (lsnr.listen(TCPPORT) != sf::Socket::Done)
 		{
-			std::cerr << "TCP Error: Can't listen to accepter.";
+			std::cerr << "TCP ERROR: Can't listen to accepter.\n";
 			return;
 		}
 		std::cout << "TCP Server Bound to port: " << TCPPORT << std::endl;
@@ -61,7 +61,7 @@ public:
 
 			if (lsnr.accept(*sock) != sf::Socket::Done)
 			{
-				std::cerr << "TCP Error: Connection not accepted." << std::endl;
+				std::cerr << "TCP ERROR: Connection not accepted.\n";
 				return;
 			}
 

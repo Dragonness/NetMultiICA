@@ -110,8 +110,6 @@ int main()
 
     while (window.isOpen())
     {
-        //UDPServer udp;
-
         sf::Event event;
         while (window.pollEvent(event))
         {
@@ -120,7 +118,7 @@ int main()
         
         window.clear();
 
-        if (window.hasFocus())
+        if (window.isOpen())
         {
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && !keyPress)
             {
@@ -143,7 +141,6 @@ int main()
                     std::thread tServerTh(&TCPServer);
                     tServerTh.detach();
 
-                    //std::thread uServerTh([&udp]() { udp.Server(); });    // Tired maybe putting it all in a class to help fix the exception... didn't work :/
                     std::thread uServerTh(&UDPServer);
                     uServerTh.detach();
                     Run(window);
@@ -201,13 +198,13 @@ int main()
 void Run(sf::RenderWindow& window)
 {
     Game game;
+    std::stringstream stream;
 
     /// ----- TCP SERVER CONNECTION -----
     std::shared_ptr<sf::TcpSocket> tSockets = std::make_shared<sf::TcpSocket>();
 
     if (tSockets->connect(sf::IpAddress::getLocalAddress(), TCPPORT) != sf::Socket::Done)
     {
-        std::stringstream stream;
         stream << "ERROR: Client failed to connect to TCP Server, PORT: " << TCPPORT << std::endl;
         std::cerr << stream.str();
         return;
@@ -220,14 +217,12 @@ void Run(sf::RenderWindow& window)
     if (uSocket.bind(sf::Socket::AnyPort) != sf::Socket::Done)
     {
         clientPort = uSocket.getLocalPort();
-        std::stringstream stream;
         stream << "ERROR: Client failed to connect to UDP Server, PORT: " << clientPort << std::endl;
         std::cerr << stream.str();
         return;
     }
 
     clientPort = uSocket.getLocalPort();
-    std::stringstream stream;
     stream << "Client bounded to UDP Server PORT: " << clientPort << std::endl;
     std::cout << stream.str();
 
@@ -235,7 +230,7 @@ void Run(sf::RenderWindow& window)
 
     unsigned short serverPort = UDPPORT;
     size_t received = 0;
-    sf::IpAddress serverIP = "192.168.0.160"/*pcIPadd*/; // Local IP address
+    sf::IpAddress serverIP = "192.168.0.160"/*pcIPadd*/; // -------- Local IP address
 
 
 
@@ -393,7 +388,7 @@ void Run(sf::RenderWindow& window)
 
             sf::Packet pack;
             pack << cInfo;
-            uSocket.send(pack.getData(), pack.getDataSize(), serverIP, serverPort);
+            tSockets->send(pack.getData(), pack.getDataSize()); //uSocket.send(pack.getData(), pack.getDataSize(), serverIP, serverPort);
         }
 
 
